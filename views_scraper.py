@@ -1,5 +1,17 @@
 import pandas as pd
 
+#need to make custom functions to operate on my data
+#function 1: gets the year w/lowest view increase
+#function 2: gets total views by artist by year
+#function 3: gets the year w/highest view increase
+#function 4: gets the music video w/highest view increase in a year
+#function 5: gets the artist w/highest view increase in a year
+
+#need to make plots
+#plot 1: line chart of top 5 most viewed kpop music videos for total views across time (years)
+#link: https://datatofish.com/line-chart-python-matplotlib/
+#plot 2: line chart total views by year for the artist w/most total views across mvs & time (years)
+#add lines for top 3 mvs for that artist?
 #figure out formatting to get numbers w/commas
 
 url = "https://kworb.net/youtube/video/9bZkp7q19f0.html"
@@ -17,6 +29,8 @@ yearlyViews_years = []
 yearlyViews_viewsDiff = []
 yearlyViews_yearCount = []
 yearlyViews_viewTotal = []
+
+#turn this into a function to meet project requirements!
 
 for i in range(len(yearlyViews_df)):
     yearlyViews_yearCount.append(i+1)
