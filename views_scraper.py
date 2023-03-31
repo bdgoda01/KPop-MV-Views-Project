@@ -1,4 +1,7 @@
 import pandas as pd
+import links_scraper
+from bs4 import BeautifulSoup
+import requests
 
 #need to make custom functions to operate on my data
 #
@@ -20,6 +23,8 @@ import pandas as pd
 #plot 2: line chart total views by year for the artist w/most total views across mvs & time (years)
 #add lines for top 3 mvs for that artist?
 #figure out formatting to get numbers w/commas
+
+
 
 url = "https://kworb.net/youtube/video/9bZkp7q19f0.html"
 views_dfs = pd.read_html(url)
@@ -49,4 +54,26 @@ def yearlyViewCleanup(original_df):
     clean_df.rename_axis("Year Count", inplace=True)
     return clean_df
 
+def getViews():
+    videoViewLinks_df = links_scraper.scrapeURLS("https://kworb.net/youtube/topvideos_korean.html")
+    videoViewInfo = {}
+    for i in range(len(videoViewLinks_df)):
+        videoRank = i + 1
+        videoViewInfo[videoRank] = {}
+        artist = 'PSY'
+        mvName = 'Gangnam Style'
+        totalViews = 4000000000
+        yearlyViews = 1
+        monthlyViews = 2
+        videoViewInfo[videoRank]['artist'] = artist
+        videoViewInfo[videoRank]['mvName'] = mvName
+        videoViewInfo[videoRank]['totalViews'] = totalViews
+        videoViewInfo[videoRank]['yearlyViews'] = yearlyViews
+        videoViewInfo[videoRank]['monthlyViews'] = monthlyViews
+    #for every url in videoViewLinks_df, make a new df with the yearlyViews, get the total view count from videoViewLinks_df, get the MVName from that df, get the artist name using bs4
+    #returns a dictionary (index: {Artist: "artist name", MVName: "mv name", totalViews: #, YearlyViews: yearlyViews_df, MonthlyViews: monthlyViews_df })
+
 cleanYearlyViews_df = yearlyViewCleanup(yearlyViews_df)
+
+
+
