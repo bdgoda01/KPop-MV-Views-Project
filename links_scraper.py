@@ -29,3 +29,4 @@ def scrapeURLS(url):
 url = "https://kworb.net/youtube/topvideos_korean.html"
 allLinks = scrapeURLS(url)
 print(allLinks.head())
+print(int(allLinks.at[0,"Views"]))
