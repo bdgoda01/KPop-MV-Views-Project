@@ -8,23 +8,6 @@ import random
 import matplotlib.pyplot as plot
 import matplotlib as mpl
 
-#need to make custom functions to operate on my data
-#
-# 
-# ONLY NEED MORE THAN 1!!!
-
-#function 1: gets total views of MVs in the Top 300 K-Pop MVs by Artist (i.e. add total views by artists in my dataset)
-#function 2: calculates average # of total yearly views for each Artist (based on MVs in the Top 300) -- use mean function on yearlyViews df
-
-#need to make a requirements txt
-
-#need to make plots
-#plot 1: bar chart of artists w/ top 10 average # of views per video per year 
-#link: https://datatofish.com/line-chart-python-matplotlib/
-#plot 2: line chart total views by year for the artist w/most total views across mvs in the top 300 & time (years)
-#figure out formatting to get numbers w/commas
-
-
 def getArtistName(url):
     response = requests.get(url)
     soup = BeautifulSoup(response.text, 'html.parser')
@@ -124,6 +107,7 @@ def getViewsByArtist(videoViews_df):
 
     return topArtistViews_df
 
+#displays bar chart with artists with the Top 10 highest average yearly views
 def displayArtistAvgViews(yrlyAvg_df):
     sortedYrlyAvg_df = yrlyAvg_df.sort_values(by='Avg Yearly Views', ascending=False)
     topArtistsAvgViews_df = sortedYrlyAvg_df.iloc[:10,:]
@@ -136,6 +120,7 @@ def displayArtistAvgViews(yrlyAvg_df):
 
     plot.show(block=True)
 
+#displays line graph of total views over time for the artist with the most views over time
 def displayMostViewedArtist(artist, yearlyViews_df):
     ax = yearlyViews_df.plot(x='Year', y='Total Views')
     plot.xlabel('Year', size=15)
