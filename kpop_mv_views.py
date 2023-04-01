@@ -114,7 +114,7 @@ def displayArtistAvgViews(yrlyAvg_df):
     ax = topArtistsAvgViews_df.plot.bar(x="Artist", y="Avg Yearly Views", rot =70)
     plot.xlabel("Artist", size=15)
     plot.ylabel("Average Yearly Views", size=15)
-    plot.title("Average Yearly Views on Top 300 Kpop MVs by Artist", size=20)
+    plot.title("Average Yearly Views on Top 100 Kpop MVs by Artist", size=20)
     plot.ticklabel_format(style='plain', axis='y')
     ax.yaxis.set_major_formatter(mpl.ticker.StrMethodFormatter('{x:,.0f}'))
 
